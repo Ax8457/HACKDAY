@@ -1,1 +1,0 @@
-# Internal Blog Challenge [WEB]
