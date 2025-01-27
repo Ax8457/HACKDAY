@@ -1,5 +1,5 @@
 # The Internal Blog 
-Source Files to run the website locally : 
+Source files to run the website locally : 
 
 ````bash
 sudo docker-compose build
