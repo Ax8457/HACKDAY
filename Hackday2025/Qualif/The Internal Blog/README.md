@@ -6,4 +6,4 @@ sudo docker-compose build
 sudo docker-compose up
 ````
 
-Front Generated whith Chat-GPT.
+Front Generated whith Chat GPT.
