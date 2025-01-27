@@ -4,7 +4,7 @@ Source files for the challenges I made for Hackday 2025 CTF qualifier challenge.
 WEB : 
 
 - The Internal Blog
-- Open The dorr
+- Open The door
 
 Forensics: 
 
