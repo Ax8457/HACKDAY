@@ -10,3 +10,12 @@ Front generated with Chat GPT
 
 **Description :**
 
+Your agency, "Steam For The Steamers," has been called in to investigate a peculiar case at the high-security prison, Impel Down. During the morning roll call, it was discovered that one prisoner was missing—the infamous engineer XXX, notorious for crafting illegal weapons and machinery for gangs.
+
+When a guard went to check his cell, they found the door locked, yet it appeared empty. Curiously, there was a letter left behind that read:
+"
+Knock knock knock Who's there?
+Oh! Not me, I'm not here (:
+"
+Unravel the mystery of this bizarre escape—how did he vanish from a locked cell?
+
