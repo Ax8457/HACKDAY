@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' http://127.0.0.1;">
+    <link rel="stylesheet" href="/style3.css">
+    <title>User Profile </title>
+</head>
+<body>
+    <header>
+        <h1>User Profile of <%- profile.profileData.get('name') %></h1>
+        <a href="/">Get back to home page</a>
+    </header>
+    <main>
+        <div class="profile-container">
+            <h3>Profile Data :</h3>
+            <pre><%= JSON.stringify(profile.profileData) %></pre>
+            <h3>Token : </h3>
+            <pre><%= profile.token %></pre>
+            <h3>Contact ID : </h3>
+            <pre><%= profile.id %></pre>
+            <h3>Account verified : </h3>
+            <pre><%= profile.profileData.get('isVerified') %></pre>
+            <h3>Messages received</h3>
+            <% if (profile.messages && profile.messages.length > 0) { %>
+                <ul>
+                    <% profile.messages.forEach(message => { %>
+                        <li>
+                            <strong>Message:</strong> <%= message.message %> <br>
+                        </li>
+                    <% }) %>
+                </ul>
+            <% } else { %>
+                <p>No messages have been sent to this user yet.</p>
+            <% } %>
+        </div>        
+    </main>
+</body>
+</html>
+

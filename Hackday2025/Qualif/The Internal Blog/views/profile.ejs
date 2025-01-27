@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style2.css">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' http://127.0.0.1; script-src 'self' 'unsafe-inline'">
+    <title>Register</title>
+</head>
+<body>
+    <header>
+        <h1>Register</h1>
+        <a href="/">Get back to home page</a>
+    </header>
+
+    <div id="token-popup">
+        <h3>Your token :</h3>
+        <p id="token-value"><%= token %></p>
+        <p>This token will disappear within 5 sec. Store it & Use it to create your account and don't share it with other people !</p>
+        <div class="progress-bar"></div>
+    </div>
+
+    <form id="profile-form" action="/profile" method="POST">
+        <label for="token">Token :</label>
+        <input type="text" name="token" id="token" placeholder="Your token here" required>
+        
+        <label for="id">Contact ID :</label>
+        <input type="text" name="id" id="id" value="<%= id %>" readonly>
+
+        <label for="username">Username :</label>
+        <input type="text" name="username" id="username" required>
+
+        <label for="name">Name :</label>
+        <input type="text" name="name" id="name" required>
+
+        <label for="description">Description :</label>
+        <textarea name="description" id="description" required></textarea>
+
+        <label for="place">Place :</label>
+        <input type="text" name="place" id="place" required>
+
+        <button type="submit">Create</button>
+    </form>
+
+    <script>
+        setTimeout(() => {
+            document.getElementById('token-popup').style.display = 'none';
+        }, 5000);
+    </script>
+</body>
+</html>
+

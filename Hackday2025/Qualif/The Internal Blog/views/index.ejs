@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="connect-src 'self' http://127.0.0.1;">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/style.css">
+    <style>
+        .admin {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blog</h1>
+        <a href="/new">Create Article</a>
+        <a href="/profile">Create Profile/Register</a>
+        <a href="/message">Send a message </a>
+    </header>
+    <main>
+        <h2>Last articles released</h2>
+        <article>
+            <h3>Anti XSS</h3>
+            <p>After a few breachs, counter XSS function had been implemented to secure the Blog, now profile creation is submitted to proper sanitization !</p>
+            <small class="admin">By : Administrator, on : <%= new Date().toDateString() %></small>
+        </article>
+        <article>
+            <h3>Publish an article to get your profile verified !</h3>
+            <p>You want to get your Account verified ? Publish your first article and an Administrator will check your profile ! </p>
+            <p>Notice that even if your account is verified, for every article published, your account will be visited by an Admin for safety reasons.</p>
+            <small class="admin">By : Administrator, On : <%= new Date().toDateString() %></small>
+        </article>
+         <article>
+            <h3>Message Feature available !</h3>
+            <p>You can now send message, using the contact ID printed on your profile at registration. Share it with other people if you want to receive messages !</p>
+            <small class="admin">By : Administrator, On : <%= new Date().toDateString() %></small>
+        </article>
+        <article>
+            <h3>CODE LEAK</h3>
+            <p>Little leak of source code</p>
+            <img src="/S1.png">
+            <small class="admin">By : Evil Administrator, On : <%= new Date().toDateString() %></small>
+        </article>
+        <% if (articles.length === 0) { %>
+            <p></p>
+        <% } else { %>
+            <% articles.forEach(article => { %>
+                <article>
+                    <h3><%= article.title %></h3>
+                    <p><%= article.content %></p>
+                    <small>By : <%= article.author %>, on : <%= article.createdAt.toDateString() %></small>
+                    <% if (article.bool === true) { %>
+                    <span style="color: green;">(Account verified)</span>
+                <% } %>
+                </article>
+            <% }) %>
+        <% } %>
+    </main>
+</body>
+</html>
+

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' http://127.0.0.1;">
+    <link rel="stylesheet" href="/style4.css">
+    <title>Send Message</title>
+</head>
+<body>
+    <header>
+        <h1>Send a Message </h1>
+        <a href="/">Get back to home page</a>
+    </header>
+
+    <main>
+        <form action="/sendmessage" method="post">
+            <label for="contact">Contact ID</label>
+            <input type="text" id="contact" name="contact" required></input>
+
+            <label for="message">Your Message</label>
+            <textarea id="message" name="message" rows="4" required></textarea>
+
+            <button type="submitt">Send</button>
+    </main>
+</body>
+</html>
+
