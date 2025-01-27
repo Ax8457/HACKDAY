@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: flask-app
+    ports:
+      - "5000:5000"
+    networks:
+      - app-network
+
+  flask-app2:
+    build:
+      context: .
+      dockerfile: dockerfile
+    container_name: flask-app2
+    ports:
+      - "14456:14456"
+    environment:
+      - FLASK_APP=flag-app_adfthrieydndsjlsfnl.py
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+

@@ -1,0 +1,30 @@
+FROM python:3.9-slim
+
+USER root
+
+WORKDIR /app
+
+COPY . /app
+
+RUN apt-get update && apt-get install -y \
+    knockd iptables e2fsprogs && \
+    apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN echo '#!/bin/bash\nwhile true; do\n  /sbin/iptables -A INPUT -p tcp --dport 14456 -j DROP\n  /sbin/iptables -A INPUT -p udp --dport 14456 -j DROP\n  sleep 30	\ndone' > /usr/local/bin/close-port.sh
+
+RUN chmod +x /usr/local/bin/close-port.sh
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+EXPOSE 5000 3000
+
+COPY knockd.conf /etc/knockd.conf
+
+COPY start.sh /start.sh
+
+RUN chmod +x /start.sh
+
+RUN chmod +x /usr/local/bin/close-port.sh
+
+CMD /usr/local/bin/close-port.sh & /start.sh
+
