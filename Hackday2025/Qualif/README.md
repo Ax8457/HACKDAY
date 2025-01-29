@@ -1,5 +1,5 @@
 # HACKDAY 2025 Qualifier challenges
-Sources files of the challenges I made for HACKDAY 2025 CTF qualifier contest.
+Official sources files of the challenges I made for HACKDAY 2025 CTF qualifier contest.
 
 WEB : 
 
