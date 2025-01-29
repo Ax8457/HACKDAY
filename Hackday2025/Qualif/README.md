@@ -10,3 +10,6 @@ Forensics :
 
 - Copper Wire Extraction
 
+<p align="center"><img src="hackday-logo-2025.png" style="width:50%">
+</p>
+
