@@ -17,3 +17,6 @@ Front generated with Chat GPT.
 
  <p align="justify"> Unravel the mystery of this bizarre escape—how did he vanish from a locked cell? </p>
 
+ <a href="https://github.com/Ax8457/WriteUPs/tree/main/Hackday2025_Qualifier">Official WUs available here</a>
+
+
