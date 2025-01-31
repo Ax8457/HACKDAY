@@ -12,7 +12,6 @@ def remove_dotdot_slash(input_string):
     banned_chars = ['../', '%', '<', '>', '#','_','-','|','{','}']
     for char in banned_chars:
         input_string = input_string.replace(char, '')
-    
     return input_string
 
 @app.route('/')
@@ -139,7 +138,6 @@ def download_page():
         selected_file_path = os.path.join(SAMPLES_DIR, selected_file)
         desc_file_path = os.path.join(DESC_DIR, desc_file)
       
-
         if not selected_file or not desc_file:
             return "Error: Both file and description file name must be provided.", 400
 
