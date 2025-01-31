@@ -15,7 +15,6 @@ app.use(session({
 
 let publishedTokens = []; 
 
-
 async function checkTokensPeriodically() {
     console.log('Checking profiles Init');
     setInterval(async () => {
