@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  rust_server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: rust_server
+    ports:
+      - "80:80" 
+      - "22:22" 
+    networks:
+      - webnet
+    restart: always
+
+networks:
+  webnet:
+    driver: bridge

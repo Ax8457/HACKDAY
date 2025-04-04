@@ -1,0 +1,76 @@
+
+FROM rust:1.85.0 as builder
+WORKDIR /app/challenge
+
+COPY Cargo.toml Cargo.lock ./
+COPY src ./src
+RUN mkdir -p ./html
+COPY src/html ./html
+
+FROM ubuntu:22.04
+ENV DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y \
+    curl \
+    build-essential \
+    libssl-dev \
+    nginx \
+    sudo \
+    openssh-server \
+    rsyslog \
+    cron \
+    tar \
+    php8.1-fpm \
+    php8.1-cli \
+    php8.1-curl \
+    php8.1-mbstring \
+    php8.1-xml \
+    php8.1-mysql \
+    php8.1-gd \
+    php8.1-zip \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+RUN echo "root:2d8ccb9f3d83be83c0db0ff2c3ee24b7" | chpasswd
+
+RUN useradd -m -s /bin/bash user && echo "user:2d8ccb9f3d83be83c0db0ff2c3ee24b7" | chpasswd && usermod -aG sudo user
+
+ENV PATH="/root/.cargo/bin:${PATH}"
+
+COPY --from=builder /app/challenge /app/challenge
+WORKDIR /app/challenge
+
+COPY ./nginxconf /var/www/html/
+
+RUN touch /var/www/html/notes.txt /var/www/html/userloginfail.txt && \
+    chown www-data:www-data /var/www/html/notes.txt /var/www/html/userloginfail.txt && \
+    chmod 664 /var/www/html/notes.txt /var/www/html/userloginfail.txt
+
+RUN mkdir -p /run/sshd && chown root:root /run/sshd && chmod 700 /run/sshd
+
+RUN usermod -aG adm www-data
+
+RUN echo "auth,authpriv.* /var/log/auth.log" >> /etc/rsyslog.conf
+
+RUN touch /var/log/auth.log && chmod 640 /var/log/auth.log && chown syslog:adm /var/log/auth.log \
+    && echo "auth log file initialized" >> /var/log/auth.log
+
+COPY ./default /etc/nginx/sites-enabled/default
+COPY ./flag.txt /root/flag.txt  
+RUN chmod 700 /root/flag.txt
+
+RUN echo "* * * * * root cd /home/user && tar -cf /opt/backup.tar *" >> /etc/crontab
+
+RUN service cron start
+
+RUN chown -R user:adm /home/user && chmod -R 770 /home/user
+
+EXPOSE 80 22
+
+CMD service nginx start && \
+    service php8.1-fpm start && \
+    service ssh start && \
+    service cron start && \
+    /usr/sbin/rsyslogd && \
+    cargo run --release
+

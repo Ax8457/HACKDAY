@@ -1,0 +1,160 @@
+/* front style entirely generated with chatgpt 
+*/
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 80%;
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.banner {
+    background-color: #0066cc;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+}
+
+.panel {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.panel-button {
+    background-color: #0066cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.panel-button:hover {
+    background-color: #004d99;
+}
+
+.panel-content {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    margin-left: 15px;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+#notes {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    font-size: 16px;
+    padding-right: 20px;
+}
+
+#notes textarea {
+    width: 100%;
+    height: 120px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: vertical;
+    box-sizing: border-box;
+}
+
+#notes button {
+    background-color: #28a745;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+#notes button:hover {
+    background-color: #218838;
+}
+
+.note {
+    background-color: #f1f1f1;
+    padding: 15px;
+    margin: 10px 0;
+    border-left: 5px solid #0066cc;
+    border-radius: 5px;
+}
+
+.note p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.log-form input,
+.log-form button {
+    margin: 10px;
+}
+
+h3 {
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+#auth {
+    display: block;
+}
+
+#network {
+    display: none;
+}
+
+#log-detail {
+    display: none;
+}
+
+#load-log {
+    display: none;
+}
+
+input[type="number"],
+input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 50%;
+}
+
+button[type="submit"] {
+    background-color: #0066cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button[type="submit"]:hover {
+    background-color: #004d99;
+}
+
+.log-wrapper {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
