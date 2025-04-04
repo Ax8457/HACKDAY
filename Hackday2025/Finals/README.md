@@ -1,7 +1,7 @@
 # HACKDAY 2025 Finals challenges
 Official sources files of the challenges I made for HACKDAY 2025 CTF finals contest.
 
-<a href="https://github.com/Ax8457/WriteUPs/tree/main/Hackday2025_finals">Official WUs available here</a>
+<a href="https://github.com/Ax8457/WriteUPs/tree/main/Hackday2025_Finals">Official WUs available here</a>
 
 MISC : 
 
