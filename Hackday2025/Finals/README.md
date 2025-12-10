@@ -3,12 +3,12 @@ Official sources files of the challenges I made for HACKDAY 2025 CTF finals cont
 
 <a href="https://github.com/Ax8457/WriteUPs/tree/main/Hackday2025_Finals">Official WUs available here</a>
 
-MISC : 
+**[MISC]** 
 
 - The Earth of the Gearford ([LINUX] crypto over the web | web | system)
 - The AetherThec Bastion ([WIN] web | system )
 
-Stegano : 
+**[Steganography]** 
 
 - The Aetheric Map
 
