@@ -3,12 +3,12 @@ Official sources files of the challenges I made for HACKDAY 2025 CTF qualifier c
 
 <a href="https://github.com/Ax8457/WriteUPs/tree/main/Hackday2025_Qualifier">Official WUs available here</a>
 
-WEB : 
+**[WEB]** 
 
 - The Internal Blog
 - Open The Door
 
-Forensics : 
+**[Forensics]** 
 
 - Copper Wire Extraction
 
