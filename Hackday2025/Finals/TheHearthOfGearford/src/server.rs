@@ -8,7 +8,7 @@ use crate::auth::{compute_tokenHMAC, receive_token, decode_token, is_admin};
 use base64::{engine::general_purpose, Engine as _};
 
 fn handle_connection(mut stream: TcpStream) {
-    let key: &[u8] = b"HACKDAY!HACKDAY!HACKDAY!HACKDAY!HACKDAY!HACKDAY!HACKDAY!HACKDAY!";
+    let key: &[u8] = b"Redacted";
     let mut is_admin_user = false;
     let mut token_valid = false;
     let buf_reader = BufReader::new(&stream);
