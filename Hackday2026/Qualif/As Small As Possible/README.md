@@ -3,7 +3,7 @@
 
 ### Run the docker on your host
 
-<p align="justify">You can run the oracle through a docker container using</p>
+<p align="justify">You can run the oracle through a docker container using:</p>
 
 ````bash
 docker compose up
@@ -20,3 +20,13 @@ docker compose up
 python3 DH_oracle.py
 ````
 
+<p align="justify">The server exposes port 4444.</p>
+
+### Bind socket
+<p align="justify">The oracle is exposed on a TCP socket you can bind using nectact: </p>
+
+````bash
+nc localhost 4444
+````
+
+> The server exposes a multi threaded socket.
