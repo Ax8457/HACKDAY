@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Account - Planner Pro</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        .app-actions-group { display: flex; align-items: center; gap: 12px; margin-left: auto; }
+        .action-item { display: flex; align-items: center; }
+        .btn-action-edit {
+            background: none; border: none; color: #1a1c23;
+            font-size: 1.3rem; cursor: pointer; display: flex;
+            align-items: center; transition: transform 0.1s ease;
+            padding: 0 5px;
+        }
+        .btn-action-edit:hover { transform: scale(1.2); color: #000; }
+        .modal-state:checked ~ .modal-overlay { opacity: 1; pointer-events: auto; }
+        textarea.edit-desc { 
+            width: 100%; min-height: 120px; margin: 15px 0; padding: 12px;
+            border: 1px solid #e2e8f0; border-radius: 8px; font-family: inherit; resize: vertical;
+        }
+        .ssrf-alert {
+            background-color: #fee2e2; border-left: 4px solid #ef4444;
+            color: #991b1b; padding: 1rem; margin-bottom: 1.5rem; border-radius: 4px;
+        }
+        .sidebar-footer {
+            margin-top: auto; padding: 20px; font-size: 0.75rem;
+            color: #94a3b8; border-top: 1px solid #334155;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="sidebar">
+        <div class="sidebar-header">PP | Planner Pro</div>
+        <ul class="nav-links">
+            <li><a href="/">Dashboard</a></li>
+            <li><a href="/account" class="active">Account</a></li>
+            <li class="divider"></li>
+            <li><a href="/logout" class="logout-btn">Logout</a></li>
+        </ul>
+        
+        <div class="sidebar-footer">
+            <p>&copy; Hackday 2026 - Chall by 0x4X3L</p>
+            <p>Front-end made by Gemini 3</p>
+        </div>
+    </nav>
+
+    <main class="content">
+        <header class="content-header">
+            <h1>Account Settings</h1>
+            <p>Manage your profile and view your schedule</p>
+        </header>
+
+        <div class="account-container">
+            <div class="card profile-card">
+                <div class="card-icon">👤</div>
+                <div class="card-info">
+                    <h2>{{ username }}</h2>
+                    <span class="role-badge">{{ role }}</span>
+                    <p class="company-tag">🏢 {{ company }}</p>
+                </div>
+            </div>
+
+            <div class="card password-card">
+                <h3>Security</h3>
+                <p>Change your password to keep your account secure.</p>
+                <form method="post" action="/change_password" class="inline-form">
+                    <input type="password" name="new_password" placeholder="New Password" required>
+                    <button type="submit" class="btn-primary">Update</button>
+                </form>
+            </div>
+
+            <div class="card appointments-card">
+                <div class="card-header-flex">
+                    <h3>Your Appointments</h3>
+                </div>
+                
+                <div class="app-grid">
+                    {% if appointments and appointments | length > 0 %}
+                        {% for app in appointments %}
+                        <div class="app-card-detailed">
+                            <div class="app-header">
+                                <span class="app-ref">#{{ app.reference }}</span>
+                                <span class="badge-status">Confirmed</span>
+                                
+                                <div class="app-actions-group">
+                                    {% if app.created_by == username %}
+                                        <div class="action-item">
+                                            <input type="checkbox" id="toggle-add-{{ app.reference }}" class="modal-state">
+                                            <label for="toggle-add-{{ app.reference }}" class="btn-action-plus" title="Add member">+</label>
+
+                                            <div class="modal-overlay">
+                                                <div class="modal-content">
+                                                    <label for="toggle-add-{{ app.reference }}" class="btn-close">&times;</label>
+                                                    <h3>Add Member</h3>
+                                                    <p>Appointment: <strong>{{ app.reference }}</strong></p>
+                                                    <form action="/add_member" method="POST">
+                                                        <input type="hidden" name="reference" value="{{ app.reference }}">
+                                                        <input type="text" name="new_member" placeholder="Username" required>
+                                                        <button type="submit" class="btn-confirm">Confirm</button>
+                                                    </form>
+                                                </div>
+                                                <label for="toggle-add-{{ app.reference }}" class="modal-backdrop-close"></label>
+                                            </div>
+                                        </div>
+
+                                        <div class="action-item">
+                                            <input type="checkbox" id="toggle-edit-{{ app.reference }}" class="modal-state">
+                                            <label for="toggle-edit-{{ app.reference }}" class="btn-action-edit" title="Edit Description">✎</label>
+
+                                            <div class="modal-overlay">
+                                                <div class="modal-content">
+                                                    <label for="toggle-edit-{{ app.reference }}" class="btn-close">&times;</label>
+                                                    <h3>Edit Description</h3>
+                                                    <p>Reference: <strong>{{ app.reference }}</strong></p>
+                                                    <form action="/edit_appointment" method="POST">
+                                                        <input type="hidden" name="reference" value="{{ app.reference }}">
+                                                        <textarea name="details" class="edit-desc" required>{{ app.event_details }}</textarea>
+                                                        <button type="submit" class="btn-confirm">Save Changes</button>
+                                                    </form>
+                                                </div>
+                                                <label for="toggle-edit-{{ app.reference }}" class="modal-backdrop-close"></label>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+
+                                    <form action="/leave_appointment" method="POST" class="form-leave">
+                                        <input type="hidden" name="reference" value="{{ app.reference }}">
+                                        <button type="submit" class="btn-leave" title="Leave Meeting">×</button>
+                                    </form>
+                                </div>
+                            </div>
+                            
+                            <div class="app-body">
+                                <h4 class="app-title">{{ app.event_name }}</h4>
+                                <div class="app-author">
+                                    <span class="author-label">Organized by:</span>
+                                    <span class="author-name">{% if app.created_by == username %}<strong>Me</strong>{% else %}{{ app.created_by }}{% endif %}</span>
+                                </div>
+                                <p class="app-desc">
+                                    {% if app.event_details %}{{ app.event_details }}{% else %}<span class="no-details">No description.</span>{% endif %}
+                                </p>
+                                <div class="app-members-list">
+                                    <p class="section-label">Members involved:</p>
+                                    <div class="member-badges">
+                                        {% for member in app.members %}
+                                            <span class="member-badge">{% if member == username %}<strong>Me</strong>{% else %}{{ member }}{% endif %}</span>
+                                        {% endfor %}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="app-footer">
+                                <div class="footer-item">{{ app.members | length }} participants</div>
+                                <div class="footer-item">Day {{ app.day }} ({{ app.month }})</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="empty-state">
+                            <p>No appointments booked yet.</p>
+                            <a href="/" class="link-action">Back to calendar</a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% if deleted_refs and deleted_refs | length > 0 %} 
+                <div class="card rebook-card" style="margin-top: 30px; border-top: 3px solid #6366f1;">
+                    {% if error and error != "" %}
+                        <div class="ssrf-alert">
+                            <strong>Security Error:</strong> {{ error }}
+                        </div>
+                    {% endif %}
+                    <h3>Quick Re-book</h3>
+                    <p style="font-size: 0.85rem; color: #6b7280; margin-bottom: 15px;">Recently deleted slots available for booking:</p>
+                    
+                    <div class="rebook-grid">
+                        {% for ref in deleted_refs %}
+                            <div class="rebook-item">
+                                <span class="app-ref">#{{ ref }}</span>
+                                <form action="/book-again" method="POST">
+                                    <input type="hidden" name="reference" value="{{ ref }}">
+                                    <button type="submit" class="btn-primary" style="width: 100%;">Book Again</button>
+                                </form>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </main>
+</body>
+</html>

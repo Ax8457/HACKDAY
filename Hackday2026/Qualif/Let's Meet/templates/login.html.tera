@@ -1,0 +1,23 @@
+<head>
+    <link rel="stylesheet" href="/static/css/style2.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Login</h1>
+    {% if error %} <div class="error-msg">{{ error }}</div> {% endif %}
+
+    <form method="post" action="/login">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" required>
+
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Login</button>
+    </form>
+
+    <div class="register-redirect">
+        <p>New here?</p>
+        <a href="/register" class="register-button">Create an account</a>
+    </div>
+</body>

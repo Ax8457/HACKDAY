@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  chall-ssrf:
+    build: .
+    container_name: ssrf_challenge
+    ports:
+      - "32778:8000"

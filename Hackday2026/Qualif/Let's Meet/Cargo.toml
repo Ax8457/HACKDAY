@@ -1,0 +1,25 @@
+[package]
+name = "challHackdayWeb"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+rocket = { version = "0.5.1", features = ["secrets"] }
+rocket_dyn_templates = { version = "0.1.0", features = ["tera"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0" # On l'utilise en direct
+chrono = "0.4"
+futures = "0.3"
+reqwest = { version = "0.11", features = ["json"] } # Pour parler à l'API
+tokio = { version = "1", features = ["full"] }
+sha2 = "0.10"
+hmac = "0.12"
+base64 = "0.21"
+
+[dependencies.mongodb]
+version = "3.4.1"
+
+
+[[bin]]
+name = "challHackdayWeb"
+path = "src/main.rs" 

@@ -1,0 +1,105 @@
+:root {
+    --bg-body: #f0f2f5;
+    --primary: #4f46e5;
+    --primary-hover: #4338ca;
+    --sidebar-color: #1a1c23;
+    --text-main: #1f2937;
+    --white: #ffffff;
+}
+
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-body);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+h1 {
+    color: var(--sidebar-color);
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+	
+form {
+    background: var(--white);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+input:focus {
+    border-color: var(--primary);
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: var(--primary-hover);
+}
+
+.register-redirect, .login-redirect {
+    margin-top: 25px;
+    text-align: center;
+}
+
+.register-redirect p, .login-redirect p {
+    margin-bottom: 10px;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.register-button, .login-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.register-button:hover, .login-link:hover {
+    text-decoration: underline;
+}
+
+
+.error-msg {
+    color: #f87171;
+    background: #fef2f2;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 0.85rem;
+    text-align: center;
+}
