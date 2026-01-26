@@ -28,5 +28,5 @@ python3 -m http.server
 emcc chall_hackday_wipin.c chall.c   -s USE_SDL=2   -s USE_SDL_TTF=2   -O3   -s INITIAL_MEMORY=64MB   -s ALLOW_MEMORY_GROWTH=1   --preload-file rules.txt   --preload-file Ithaca.ttf   -o index.html -s MINIFY_HTML=0 -s ASSERTIONS=1 -s FORCE_FILESYSTEM=1 -s FULL_ES2=1
 ````
 
-> You must back up index.html, otherwise emscripten will override current one and custom integrations and styles will be lost
-> You're very likely to face issues with frozen cach, to solve  it your must edit /usr/share/emscripten/tools/config_template.py or /usr/share/emscripten/tools/config_template.py
+>  <p align="justify">You must back up index.html, otherwise emscripten will override current one and custom integrations and styles will be lost
+> You're very likely to face issues with frozen cach, to solve  it your must edit /usr/share/emscripten/tools/config_template.py or /usr/share/emscripten/tools/config_template.py</p>
