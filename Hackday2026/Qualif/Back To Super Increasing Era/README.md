@@ -16,3 +16,13 @@ curl -X POST http://127.0.0.1:5000/custom_encryption/encrypt/ \
      -H "Content-Type: application/json" \
      -d '{"M": "Hello Hackday"}'
 ````
+
+### Curl oracle to decrypt cipher
+
+````bash
+curl -X POST http://127.0.0.1:5000/custom_encryption/decrypt/ \
+     -H "Content-Type: application/json" \
+     -d '{"Cipher": 123456789, "MessageSizeBits": 112}'
+````
+
+> <p alige="justify">This server is a single thread server.</p> 
