@@ -1,7 +1,7 @@
 # HACKDAY 2026 Qualifier challenges
 Official sources files of the challenges I made for HACKDAY 2026 CTF qualifier contest.
 
-<a href="https://github.com/Ax8457/WriteUPs">Official WUs available here</a>
+<a href="https://github.com/Ax8457/WriteUPs/Hackday2026_Qualifier/">Official WUs available here</a>
 
 **[WEB]** 
 
