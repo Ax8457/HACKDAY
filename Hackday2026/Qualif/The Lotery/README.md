@@ -3,7 +3,7 @@
 
 ### Run the docker on your host
 
-<p align="justify">WASM binary behing the application is already compiled using emscripten and attached to this repo. To run build and run the application: </p>
+<p align="justify">WASM binary behing the application is already compiled using emscripten and attached to this repo. To build and run the application: </p>
 
 ````bash
 cd docker
