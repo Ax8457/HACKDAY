@@ -1,0 +1,7 @@
+services:
+  chall-wasm:
+    build: .
+    container_name: wipin_chall
+    ports:
+      - "33779:8000"
+    restart: always
