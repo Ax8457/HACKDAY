@@ -1,0 +1,21 @@
+FROM python:3.11-slim-bookworm
+
+RUN apt-get update && apt-get install -y \
+    gcc \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir pycryptodome
+
+RUN useradd -m ctf
+WORKDIR /home/ctf
+
+COPY DH_oracle.py .
+
+RUN chmod +x DH_oracle.py
+
+ENV PYTHONUNBUFFERED=1
+
+EXPOSE 4444
+
+CMD ["python3", "DH_oracle.py"]

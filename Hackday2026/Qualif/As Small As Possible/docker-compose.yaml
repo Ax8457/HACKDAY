@@ -1,0 +1,6 @@
+services:
+  as-small-as-possible:
+    build: .
+    container_name: asap_challenge
+    ports:
+      - "4444:4444"
