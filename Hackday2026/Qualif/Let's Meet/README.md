@@ -18,8 +18,9 @@ cargo build
 docker compose up
 ````
 
+<p align="justify">Docker container exposes server on port 32778</p>
+
 > <p align="justify">You must install cargo rust utilities to be able to compile server binaries before running the server through docker</p>
-> <p align="justify">Docker container exposes server on port 32778</p>
 > <p align="justify">Once Image is built you can delete cargo cache and target folder using 'cargo clean'</p>
 
 ### Run the application on your host
